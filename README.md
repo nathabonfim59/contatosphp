@@ -6,3 +6,5 @@ Uma agenda de contatos local que utiliza cookies para armazenamento das informa�
 - Armazenamento de nome, telefone e e-mail (facilmente alteráveil)
 - Sem dependências externas
 
+# Prévia 
+![image](image.png)
