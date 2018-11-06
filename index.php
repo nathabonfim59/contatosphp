@@ -26,7 +26,10 @@
             armazenarContato(
                 $_GET['nome'],
                 $_GET['telefone'],
-                $_GET['email']
+                $_GET['email'],
+                $_GET['data_nascimento'],
+                $_GET['descricao'],
+                $_GET['favorito']
             );
         }
         
@@ -54,15 +57,21 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="email" class="col-form-label col-sm-2">Data de nascimento</label>
+                <div class="col-sm-10">
+                    <input type="date" id="data_nascimento" name="data_nascimento" class="form-control" placeholder="16/10/1998" required>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label for="email" class="col-form-label col-sm-2">Descrição</label>
                 <div class="col-sm-10">
-                    <textarea type="text" id="descrivao" name="descrivao" class="form-control" placeholder="Descrição do contato"></textarea>
+                    <textarea type="text" id="descrivao" name="descricao" class="form-control" placeholder="Descrição do contato" required></textarea>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-2 ml-3"></div>
                 <div class="custom-control custom-checkbox col-sm-9">
-                    <input type="checkbox" class="custom-control-input" id="favoritoCheckbox" value="sim" name="favorito" required>
+                    <input type="checkbox" class="custom-control-input" id="favoritoCheckbox" value="sim" name="favorito">
                     <label class="custom-control-label" for="favoritoCheckbox">Favorito</label>
                 </div>
             </div>
@@ -78,7 +87,12 @@
         
         foreach ($lista_de_contatos as $contato):?>
             <div class="card col-sm-4 p-0 mt-2">
-                <div class="card-header font-weight-bold"><?php echo $contato['nome']; ?></div>
+                <div class="card-header font-weight-bold"><?php 
+                
+                    checa_favorito($contato['favorito']);
+                    echo $contato['nome']; 
+
+                ?></div>
 
                 <div class="list-group list-flush">
                     <div class="list-group-item">
@@ -88,7 +102,15 @@
                     <div class="list-group-item">
                         <p class="text-uppercase font-weight-bold text-muted">E-mail</p>
                         <p><?php echo $contato['email']; ?></p>
-                    </div> 
+                    </div>
+                    <div class="list-group-item">
+                        <p class="text-uppercase font-weight-bold text-muted">Data de nascimento</p>
+                        <p><?php echo $contato['data_nascimento']; ?></p>
+                    </div>
+                    <div class="list-group-item">
+                        <p class="text-uppercase font-weight-bold text-muted">Descrição</p>
+                        <p class="p-2 bg-light border"><?php echo $contato['descricao']; ?></p>
+                    </div>
                 </div>
             </div>
         <?php endforeach; ?>
