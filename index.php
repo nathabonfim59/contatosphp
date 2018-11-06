@@ -1,61 +1,3 @@
-<?php
-
-/**
- * Checa se houve algum erro no envio do formulário
- *
- * @return bool
- */
-function checar_erros() {
-
-    $todasInformacoesPreenchidas = (
-        isset($_GET['nome']) && $_GET['nome'] != "" &&
-        isset($_GET['telefone']) && $_GET['telefone'] != "" &&
-        isset($_GET['email']) && $_GET['email'] != ""
-    );
-
-    $nadaPreenchido = (
-        !isset($_GET['nome']) &&
-        !isset($_GET['telefone']) &&
-        !isset($_GET['email'])
-    );
-
-    if ($todasInformacoesPreenchidas || $nadaPreenchido) {
-        return true;
-    } else {
-        ?>
-        <div class="borders rounded bg-danger pt-3 pb-1 pl-3 pr-3 mb-2 text-light text-center">
-            <h3 class="font-weight-bold">Ocorreu um erro no cadastro do contato.</h3>
-            <p>Confira as informações e tente novamente.</p>
-        </div>
-        <?php
-    }
-}
-
-/**
- * Armazena um contato
- *
- * @param string $nome Nome do contato
- * @param string $telefone Telefone do contato 
- * @param string $email E-mail do contato
- * @return void
- */
-function armazenarContato($nome, $telefone, $email) {
-    $lista_de_contatos = json_decode($_COOKIE['lista_de_contatos']);
-    
-    $lista_de_contatos[] = array(
-        "nome"       => $nome,
-        "telefone"   => $telefone,
-        "email"      => $email
-    );
-
-    setcookie(
-        'lista_de_contatos', 
-        json_encode($lista_de_contatos, JSON_UNESCAPED_SLASHES)
-    );
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,6 +13,8 @@ function armazenarContato($nome, $telefone, $email) {
         
         <?php 
 
+        include "contatos.php";
+
         $semErros = false;
         $operacaoAdicionarContato = count($_GET) > 0 && isset($_GET['nome']);
 
@@ -85,8 +29,6 @@ function armazenarContato($nome, $telefone, $email) {
                 $_GET['email']
             );
         }
-
-
         
 
         ?>
@@ -109,6 +51,19 @@ function armazenarContato($nome, $telefone, $email) {
                 <label for="email" class="col-form-label col-sm-2">E-mail</label>
                 <div class="col-sm-10">
                     <input type="email" id="email" name="email" class="form-control" placeholder="email@email.com">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-form-label col-sm-2">Descrição</label>
+                <div class="col-sm-10">
+                    <textarea type="text" id="descrivao" name="descrivao" class="form-control" placeholder="Descrição do contato"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2 ml-3"></div>
+                <div class="custom-control custom-checkbox col-sm-9">
+                    <input type="checkbox" class="custom-control-input" id="favoritoCheckbox" value="sim" name="favorito" required>
+                    <label class="custom-control-label" for="favoritoCheckbox">Favorito</label>
                 </div>
             </div>
             <div class="col-sm-12 text-center mt-5">
