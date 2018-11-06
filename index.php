@@ -81,7 +81,7 @@
         </form>
         
         <h3 class="mt-5 mb-3 font-weight-bold text-muted text-center">Contatos cadastrados</h3>
-        <div class="border-top p-3 row" style="background-color: #dee0e0;border-color: #3cc3d8 !important;border-width: 5px !important;">
+        <div class="border-top p-3 row mb-3" style="background-color: #dee0e0;border-color: #3cc3d8 !important;border-width: 5px !important;">
         <?php
         $lista_de_contatos = json_decode($_COOKIE['lista_de_contatos'], true); 
         

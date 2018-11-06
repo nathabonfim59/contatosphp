@@ -7,4 +7,5 @@ Uma agenda de contatos local que utiliza cookies para armazenamento das informa�
 - Sem dependências externas
 
 # Prévia 
-![image](image.png)
+![image-1](screenshots/screenshot-1.png)
+![image-2](screenshots/screenshot-2.png)

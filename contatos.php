@@ -12,8 +12,7 @@ function checar_erros() {
         isset($_GET['telefone']) && $_GET['telefone'] != "" &&
         isset($_GET['email']) && $_GET['email'] != "" &&
         isset($_GET['data_nascimento']) && $_GET['data_nascimento'] != "" &&
-        isset($_GET['descricao']) && $_GET['descricao'] != "" &&
-        isset($_GET['favorito']) && $_GET['favorito'] != ""
+        isset($_GET['descricao']) && $_GET['descricao'] != ""
     );
 
     $nadaPreenchido = (
