@@ -46,7 +46,7 @@
             <div class="form-group row">
                 <div class="col-sm-2 ml-3"></div>
                 <div class="custom-control custom-checkbox col-sm-9">
-                    <input type="checkbox" class="custom-control-input" id="favoritoCheckbox" value="sim" name="favorito">
+                    <input type="checkbox" class="custom-control-input" id="favoritoCheckbox" value="1" name="favorito">
                     <label class="custom-control-label" for="favoritoCheckbox">Favorito</label>
                 </div>
             </div>

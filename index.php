@@ -2,7 +2,6 @@
 
 include "ajudantes.php";
 include "banco.php";
-include "contatos.php";
 
 $semErros = false;
 $operacaoAdicionarContato = count($_GET) > 0 && isset($_GET['nome']);
@@ -13,6 +12,7 @@ if (isset($_GET)) {
 
 if ($semErros && $operacaoAdicionarContato) {
     armazenarContato(
+        $conexao,
         htmlspecialchars($_GET['nome']),
         htmlspecialchars($_GET['telefone']),
         htmlspecialchars($_GET['email']),

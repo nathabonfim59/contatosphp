@@ -31,3 +31,48 @@ function get_lista_de_contatos($conexao) {
     
     return $lista_de_contatos;
 }
+
+
+/**
+ * Armazena um contato
+ *
+ * @param mysqli $conexao Conexão com o banco de dados mysqli
+ * 
+ * @param string $nome Nome do contato
+ * @param string $telefone Telefone do contato 
+ * @param string $email E-mail do contato
+ * @param string $data_nascimento Data de nascimento do contato
+ * @param string $descricao Descrição do contato
+ * @param int $favorito Se ele é favorito ou não (0 ou 1)
+ * @return void
+ */
+function armazenarContato($conexao, $nome, $telefone, $email, $data_nascimento, $descricao, $favorito) {
+    
+    $dadosContato = array(
+        "nome"              => $nome,
+        "telefone"          => traduz_telefone_banco($telefone),
+        "email"             => $email,
+        "data_nascimento"   => $data_nascimento,
+        "descricao"         => $descricao,
+        "favorito"          => $favorito
+    );
+
+    $sqlQuery = "INSERT INTO contatos (
+        nome,
+        telefone,
+        email,
+        data_nascimento,
+        descricao,
+        favorito
+    ) VALUES (
+        '{$dadosContato['nome']}',
+        {$dadosContato['telefone']},
+        '{$dadosContato['email']}',
+        '{$dadosContato['data_nascimento']}',
+        '{$dadosContato['descricao']}',
+        {$dadosContato['favorito']}
+    )";
+
+    var_dump($sqlQuery);
+    mysqli_query($conexao, $sqlQuery);
+}
