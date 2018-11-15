@@ -1,10 +1,10 @@
 <?php
 
 // Configuração do banco de dados
-$dbHost = '127.0.0.1';
-$dbUsername = 'sistemacontatos';
-$dbPassword = 'sistema123contatos';
-$dbName = 'contatos';
+$dbHost = '127.0.0.1'; // Endereço do servidor MySQL
+$dbUsername = 'sistemacontatos'; // Nome de usuário do banco de dados
+$dbPassword = 'sistema123contatos'; // Senha do usuário
+$dbName = 'contatos'; // Nome da tabela
 
 $conexao = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
 
