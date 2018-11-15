@@ -73,7 +73,7 @@
                 <div class="list-group list-flush">
                     <div class="list-group-item">
                         <p class="text-uppercase font-weight-bold text-muted">Telefone</p>
-                        <p><?php echo $contato['telefone']; ?></p>
+                        <p><?php echo traduz_telefone_exibicao($contato['telefone']); ?></p>
                     </div>
                     <div class="list-group-item">
                         <p class="text-uppercase font-weight-bold text-muted">E-mail</p>

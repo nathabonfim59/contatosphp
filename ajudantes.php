@@ -44,7 +44,7 @@ function traduz_data_exibir($data) {
  * @return void
  */
 function checa_favorito($favorito) {
-    if ($favorito == "sim") {
+    if ($favorito == 1) {
         echo '<span class="p-1 mr-2 bg-warning text-white text-center">★</span>';
     }
 }
@@ -101,4 +101,47 @@ function traduz_telefone_banco($telefone) {
     );
 
     return (int)$numero_telefone;
+}
+
+/**
+ * Adiciona os espaços, hífens e parênteses
+ * ao telefone na tela de exibição
+ *
+ * @param [type] $telefone
+ * @return void
+ */
+function traduz_telefone_exibicao($telefone) {
+    $telefone_cru = (string)$telefone;
+
+    $tamanho_num = strlen($telefone_cru);
+    // [1] Resto inicial: Tudo que sobra antes do número
+    // [2] Quatro Centrais: Os quatro números antes do 4 últimos
+    // [3] Quatro Ultimos: os quatro últimos números.
+    //
+    // Leia a legenda:
+    // ------------------
+    //  [1]   [2]  [3]
+    // 44 9822-1231
+    $digitos = array(
+        "quatro_ultimos" => substr(
+            $telefone_cru,
+            -4
+        ),
+        "quatro_centrais" => substr(
+            $telefone_cru,
+            -8,
+            4
+        ),
+        "resto_inicial" => substr(
+            $telefone_cru,
+            0,
+            ($tamanho_num - 8)
+        )
+    );
+    //
+    $telefone_formatado = "{$digitos['resto_inicial']} ". 
+        "{$digitos['quatro_centrais']}-". 
+        "{$digitos['quatro_ultimos']}";
+
+    return $telefone_formatado;
 }
