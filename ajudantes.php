@@ -14,3 +14,22 @@ function exibe_erro($mensgem) {
     </div>
     <?php
 }
+
+
+/**
+ * Traduz a data do banco de dados para o padão 
+ * português/brasil
+ * 
+ *  yyyy/mm/dd => dd/mm/yyyy
+ *
+ * @param string $data Data no formato americano do banco de dados
+ * @return string
+ */
+function traduz_data_exibir($data) {
+    $dados = explode("-", $data);
+
+    // Data no formato => dd/mm/yyyy
+    $data_exibicao = "{$dados[2]}/{$dados[1]}/{$dados[0]}";
+
+    return $data_exibicao;
+}

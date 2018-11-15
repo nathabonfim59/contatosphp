@@ -81,7 +81,7 @@
                     </div>
                     <div class="list-group-item">
                         <p class="text-uppercase font-weight-bold text-muted">Data de nascimento</p>
-                        <p><?php echo $contato['data_nascimento']; ?></p>
+                        <p><?php echo traduz_data_exibir($contato['data_nascimento']); ?></p>
                     </div>
                     <div class="list-group-item">
                         <p class="text-uppercase font-weight-bold text-muted">Descrição</p>
