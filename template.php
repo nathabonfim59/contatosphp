@@ -60,7 +60,7 @@
         <?php
         
         $lista_de_contatos = get_lista_de_contatos($conexao); 
-        
+        // var_dump($lista_de_contatos);
         foreach ($lista_de_contatos as $contato):?>
             <div class="card col-sm-4 p-0 mt-2">
                 <div class="card-header font-weight-bold"><?php 

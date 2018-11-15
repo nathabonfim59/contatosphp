@@ -2,7 +2,7 @@
 
 // Configuração do banco de dados
 $dbHost = '127.0.0.1';
-$dbUsername = 'sistemacontatosa';
+$dbUsername = 'sistemacontatos';
 $dbPassword = 'sistema123contatos';
 $dbName = 'contatos';
 
@@ -21,12 +21,12 @@ if (!$conexao) {
 function get_lista_de_contatos($conexao) {
     $lista_de_contatos = array();
 
-    $sqlQuery = " SELECT * FROM contatos";
+    $sqlQuery = "SELECT * FROM contatos";
 
     $resultado = mysqli_query($conexao, $sqlQuery);
 
     while ($contato = mysqli_fetch_assoc($resultado)) {
-        $lista_de_contatos = $contato;
+        $lista_de_contatos[] = $contato;
     }
     
     return $lista_de_contatos;
