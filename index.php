@@ -24,12 +24,12 @@
 
         if ($semErros && $operacaoAdicionarContato) {
             armazenarContato(
-                $_GET['nome'],
-                $_GET['telefone'],
-                $_GET['email'],
-                $_GET['data_nascimento'],
-                $_GET['descricao'],
-                $_GET['favorito']
+                htmlspecialchars($_GET['nome']),
+                htmlspecialchars($_GET['telefone']),
+                htmlspecialchars($_GET['email']),
+                htmlspecialchars($_GET['data_nascimento']),
+                htmlspecialchars($_GET['descricao']),
+                htmlspecialchars($_GET['favorito'])
             );
         }
         
